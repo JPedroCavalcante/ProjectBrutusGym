@@ -1,10 +1,13 @@
 package br.com.project.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Clients {
     private int matricula;
     private String nome;
     private String CttPEmergencia;
-    private String RG;
+    private String DDV;
     private String CPF;
     private String email;
     private String celular;
@@ -15,7 +18,7 @@ public class Clients {
     private String bairro;
     private String cidade;
     private String UF; 
-
+    
     public int getMatricula() {
         return matricula;
     }
@@ -38,14 +41,6 @@ public class Clients {
 
     public void setCttPEmergencia(String CttPEmergencia) {
         this.CttPEmergencia = CttPEmergencia;
-    }
-
-    public String getRG() {
-        return RG;
-    }
-
-    public void setRG(String RG) {
-        this.RG = RG;
     }
 
     public String getCPF() {
@@ -128,5 +123,12 @@ public class Clients {
         this.UF = UF;
     }
 
-    
+        public String getDDV() {
+        return DDV;
+        
+    }
+
+    public void setDDV(String DDV) {
+        this.DDV = DDV;
+    }
 }

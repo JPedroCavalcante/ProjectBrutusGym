@@ -5,8 +5,6 @@
         <group>
             <file>file:/C:/Users/JPedroSTX/Documents/NetBeansProjects/ProjectBrutusGym/src/br/com/project/model/Clients.java</file>
             <file>file:/C:/Users/JPedroSTX/Documents/NetBeansProjects/ProjectBrutusGym/src/br/com/project/dao/ClientsDAO.java</file>
-            <file>file:/C:/Users/JPedroSTX/Documents/NetBeansProjects/ProjectBrutusGym/src/br/com/project/model/Utilitaries.java</file>
-            <file>file:/C:/Users/JPedroSTX/Documents/NetBeansProjects/ProjectBrutusGym/src/br/com/project/jdbc/ConnectionFactory.java</file>
             <file>file:/C:/Users/JPedroSTX/Documents/NetBeansProjects/ProjectBrutusGym/src/br/com/project/view/JFrmClientes.java</file>
         </group>
     </open-files>

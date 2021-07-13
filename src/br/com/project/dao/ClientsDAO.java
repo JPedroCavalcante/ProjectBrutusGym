@@ -2,11 +2,14 @@ package br.com.project.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import br.com.project.jdbc.ConnectionFactory;
 import br.com.project.model.Clients;
+import java.sql.Date;
 import java.util.List;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -16,11 +19,10 @@ public class ClientsDAO {
     public ClientsDAO(){
         this.connection = new ConnectionFactory().getConnection();
     }
-    
     public void cadastrarCliente(Clients cli){
         try {
             String sql =
-                    "INSERT INTO tb_clientes(nome,cttpemergencia,rg,cpf,email,celular,cep,endereco,numero,"
+                    "INSERT INTO tb_clientes(nome,cttpemergencia,ddv,cpf,email,celular,cep,endereco,numero,"
                     + "complemento, bairro,cidade,estado)"
                     + " values(?,?,?,?,?,?,?,?,?,?,?,?,?) ";
             
@@ -28,7 +30,7 @@ public class ClientsDAO {
             
             stmt.setString(1, cli.getNome());
             stmt.setString(2, cli.getCttPEmergencia());
-            stmt.setString(3, cli.getRG());
+            stmt.setString(3, cli.getDDV());
             stmt.setString(4, cli.getCPF());
             stmt.setString(5, cli.getEmail());
             stmt.setString(6, cli.getCelular());
@@ -50,7 +52,7 @@ public class ClientsDAO {
         }
                  
     }
-/*
+    
 public List<Clients> listarClientes(){
         try {
             List<Clients> lista = new ArrayList<>();            
@@ -63,18 +65,17 @@ public List<Clients> listarClientes(){
                 
                 cli.setMatricula(rs.getInt("matricula"));
                 cli.setNome(rs.getString("nome"));
-                cli.setRg(rs.getString("rg"));
-                cli.setCpf(rs.getString("cpf"));
+                cli.setDDV(rs.getString("ddv"));
+                cli.setCPF(rs.getString("cpf"));
                 cli.setEmail(rs.getString("email"));
-                cli.setTelefone(rs.getString("telefone"));
                 cli.setCelular(rs.getString("celular"));
-                cli.setCep(rs.getString("cep"));
+                cli.setCEP(rs.getString("cep"));
                 cli.setEndereco(rs.getString("endereco"));
-                cli.setNumero(rs.getInt("numero"));
-                cli.setComplemento(rs.getString("complemento"));
+                cli.setN(rs.getInt("numero"));
+                cli.setComp(rs.getString("complemento"));
                 cli.setBairro(rs.getString("bairro"));
                 cli.setCidade(rs.getString("cidade"));
-                cli.setUf(rs.getString("estado"));
+                cli.setUF(rs.getString("estado"));
                 
                 lista.add(cli);
             }
@@ -100,14 +101,14 @@ public List<Clients> listarClientes(){
                 
                 cli.setMatricula(rs.getInt("matricula"));
                 cli.setNome(rs.getString("nome"));
-                cli.setCttPEmergencia(rs.getInt("cttpemergencia"));
-                cli.setRG(rs.getString("rg"));
+                cli.setCttPEmergencia(rs.getString("cttpemergencia"));
+                cli.setDDV(rs.getString("ddv"));
                 cli.setCPF(rs.getString("cpf"));
                 cli.setEmail(rs.getString("email"));
                 cli.setCelular(rs.getString("celular"));
                 cli.setCEP(rs.getString("cep"));
                 cli.setEndereco(rs.getString("endereco"));
-                cli.setNumero(rs.getInt("numero"));
+                cli.setN(rs.getInt("numero"));
                 cli.setComp(rs.getString("complemento"));
                 cli.setBairro(rs.getString("bairro"));
                 cli.setCidade(rs.getString("cidade"));
@@ -136,14 +137,14 @@ public List<Clients> listarClientes(){
             if(rs.next()){                
                 cli.setMatricula(rs.getInt("matricula"));
                 cli.setNome(rs.getString("nome"));
-                cli.setCttPEmergencia(rs.getInt("cttpemergencia"));
-                cli.setRG(rs.getString("rg"));
+                cli.setCttPEmergencia(rs.getString("cttpemergencia"));
+                cli.setDDV(rs.getString("ddv"));
                 cli.setCPF(rs.getString("cpf"));
                 cli.setEmail(rs.getString("email"));
                 cli.setCelular(rs.getString("celular"));
                 cli.setCEP(rs.getString("cep"));
                 cli.setEndereco(rs.getString("endereco"));
-                cli.setNumero(rs.getInt("numero"));
+                cli.setN(rs.getInt("numero"));
                 cli.setComp(rs.getString("complemento"));
                 cli.setBairro(rs.getString("bairro"));
                 cli.setCidade(rs.getString("cidade"));
@@ -178,7 +179,7 @@ public List<Clients> listarClientes(){
     public void alterarCliente(Clients cli){
          try {
                        
-            String sql = "UPDATE tb_clientes SET nome=?, cttpemergencia=?, rg=?, cpf=?, email=?, "
+            String sql = "UPDATE tb_clientes SET nome=?, cttpemergencia=?, ddv=?, cpf=?, email=?, "
                     + "celular=?, cep=?, endereco=?, numero=?, "
                     + "complemento=?, bairro=?, cidade=?, estado=?"
                     + " where matricula=?";
@@ -186,7 +187,7 @@ public List<Clients> listarClientes(){
             
             stmt.setString(1, cli.getNome());
             stmt.setString(2, cli.getCttPEmergencia());
-            stmt.setString(3, cli.getRG());
+            stmt.setString(3, cli.getDDV());
             stmt.setString(4, cli.getCPF());
             stmt.setString(5, cli.getEmail());
             stmt.setString(6, cli.getCelular());
@@ -209,6 +210,10 @@ public List<Clients> listarClientes(){
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro: "+ ex);           
         }
-    }*/
+    }
+
+    private String format(LocalDate ddv) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
